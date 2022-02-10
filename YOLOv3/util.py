@@ -16,7 +16,6 @@ def unique(tensor):
     tensor_res.copy_(unique_tensor)
     return tensor_res
 
-
 def bbox_iou(box1, box2):
     """
     Returns the IoU of two bounding boxes
@@ -45,7 +44,6 @@ def bbox_iou(box1, box2):
     return iou
 
 def predict_transform(prediction, inp_dim, anchors, num_classes, CUDA = True):
-
 
     batch_size = prediction.size(0)
     stride =  inp_dim // prediction.size(2)
@@ -108,8 +106,6 @@ def write_results(prediction, confidence, num_classes, nms_conf = 0.4):
 
     write = False
 
-
-
     for ind in range(batch_size):
         image_pred = prediction[ind]          #image Tensor
        #confidence threshholding
@@ -129,7 +125,7 @@ def write_results(prediction, confidence, num_classes, nms_conf = 0.4):
 
         if image_pred_.shape[0] == 0:
             continue
-#
+# --
 
         #Get the various classes detected in the image
         img_classes = unique(image_pred_[:,-1])  # -1 index holds the class index
